@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flip & Match</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="game-container">
+
+    <header>
+      <p class="subtitle">A LITTLE MEMORY CHALLENGE</p>
+      <h1>Flip & Match ✿</h1>
+      <p class="description">Find the matching pairs!</p>
+      <p id="levelDisplay">Easy · Level 1</p>
+    </header>
+
+    <section class="controls">
+      <div class="difficulty">
+        <p>CHOOSE DIFFICULTY</p>
+        <div class="difficulty-buttons">
+          <button class="level-btn active" data-level="easy">Easy</button>
+          <button class="level-btn" data-level="normal">Normal</button>
+          <button class="level-btn" data-level="hard">Hard</button>
+        </div>
+      </div>
+
+      <button id="musicBtn">♫ Music: OFF</button>
+    </section>
+
+    <section class="game-info">
+      <div class="info-box">
+        <span>⏱ Time</span>
+        <h2 id="timer">00:00</h2>
+      </div>
+
+      <div class="info-box">
+        <span>🎯 Moves</span>
+        <h2 id="moves">0</h2>
+      </div>
+
+      <div class="info-box">
+        <span>⭐ Matches</span>
+        <h2 id="matches">0/3</h2>
+      </div>
+    </section>
+
+    <div class="game-board" id="gameBoard"></div>
+
+    <button id="retryBtn">↻ Retry Game</button>
+
+    <section class="win-screen" id="winScreen">
+      <div class="win-content">
+        <div class="win-icon">🏆</div>
+        <h2>Level Completed!</h2>
+        <p>You did amazing!</p>
+
+        <div class="win-stats">
+          <span>⏱ <b id="finalTime">00:00</b></span>
+          <span>🎯 <b id="finalMoves">0</b> moves</span>
+        </div>
+
+        <button id="nextLevelBtn">Next Level →</button>
+      </div>
+    </section>
+
+    <p class="footer">made with a little bit of magic ♡</p>
+
+    <audio id="backgroundMusic" loop>
+      <source src="music.mpeg" type="audio/mpeg">
+    </audio>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

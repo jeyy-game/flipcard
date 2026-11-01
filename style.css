@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(135deg, #ffe5f0, #e5eaff, #e5f8f3);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 15px;
+  color: #65566f;
+}
+
+.game-container {
+  width: 100%;
+  max-width: 560px;
+  text-align: center;
+}
+
+header {
+  margin-bottom: 22px;
+}
+
+.subtitle {
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 900;
+  color: #bd8bb7;
+}
+
+h1 {
+  font-size: 38px;
+  color: #9675b9;
+  margin: 8px 0;
+}
+
+.description {
+  color: #a38ca9;
+  font-size: 14px;
+}
+
+#levelDisplay {
+  color: #a98bc9;
+  font-weight: 900;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.controls {
+  margin-bottom: 22px;
+}
+
+.difficulty p {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #a98bc9;
+  margin-bottom: 10px;
+}
+
+.difficulty-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.level-btn {
+  padding: 9px 22px;
+  border: 2px solid white;
+  border-radius: 20px;
+  background: #ffffffa8;
+  color: #9277aa;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.level-btn.active {
+  background: #a98bc9;
+  color: white;
+  border-color: #a98bc9;
+  box-shadow: 0 4px 0 #8c70ad;
+}
+
+.level-btn:hover {
+  transform: translateY(-2px);
+}
+
+#musicBtn {
+  margin-top: 15px;
+  padding: 9px 20px;
+  border: 2px solid white;
+  border-radius: 20px;
+  background: #ffffffa8;
+  color: #9277aa;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.game-info {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.info-box {
+  flex: 1;
+  padding: 12px 5px;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid white;
+  border-radius: 16px;
+  box-shadow: 0 5px 15px #b99bb526;
+}
+
+.info-box span {
+  font-size: 12px;
+}
+
+.info-box h2 {
+  font-size: 20px;
+  color: #a17ab9;
+  margin-top: 5px;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  perspective: 1000px;
+}
+
+.card {
+  aspect-ratio: 1;
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card.matched {
+  pointer-events: none;
+  transform: rotateY(180deg) scale(0.94);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 17px;
+  backface-visibility: hidden;
+  font-size: 34px;
+  user-select: none;
+}
+
+.card-front {
+  background: linear-gradient(145deg, #c8b5ed, #a99bdc);
+  color: white;
+  box-shadow: 0 5px 0 #9382c4;
+}
+
+.card-back {
+  background: white;
+  transform: rotateY(180deg);
+  box-shadow: 0 5px 15px #b99bb530;
+}
+
+.card.matched .card-back {
+  background: #e3f8e9;
+  border: 2px solid #a6dcb6;
+}
+
+#retryBtn,
+#nextLevelBtn {
+  margin-top: 25px;
+  padding: 13px 30px;
+  border: none;
+  border-radius: 30px;
+  background: #a98bc9;
+  color: white;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #8c70ad;
+  transition: 0.2s;
+}
+
+#retryBtn:hover,
+#nextLevelBtn:hover {
+  transform: translateY(-3px);
+}
+
+#retryBtn:active,
+#nextLevelBtn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #8c70ad;
+}
+
+.win-screen {
+  display: none;
+  margin-top: 25px;
+  padding: 25px 15px;
+  background: rgba(255,255,255,0.85);
+  border: 2px solid white;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px #b99bb530;
+}
+
+.win-screen.show {
+  display: block;
+  animation: popIn 0.5s ease;
+}
+
+.win-icon {
+  font-size: 55px;
+  margin-bottom: 10px;
+  animation: bounce 1s infinite alternate;
+}
+
+.win-content h2 {
+  color: #9675b9;
+  font-size: 25px;
+}
+
+.win-content p {
+  color: #a38ca9;
+  margin: 7px 0 18px;
+}
+
+.win-stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 13px;
+}
+
+.footer {
+  margin-top: 25px;
+  font-size: 11px;
+  color: #b59ab9;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+@media (max-width: 400px) {
+  h1 {
+    font-size: 31px;
+  }
+
+  .game-board {
+    gap: 8px;
+  }
+
+  .card-face {
+    font-size: 27px;
+    border-radius: 13px;
+  }
+
+  .level-btn {
+    padding: 8px 17px;
+  }
+}
